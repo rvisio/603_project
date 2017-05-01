@@ -35,5 +35,3 @@ ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Poin
   geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="Line")) +
   scale_fill_manual(name="ez pz lgnd", values=c(points="blue", line="red")) + 
   ggtitle("2016 NFL Expected Points") + labs(x="Yard Line", y="Expected Points")
-
-                            
