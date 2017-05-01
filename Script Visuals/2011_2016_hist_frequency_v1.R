@@ -65,22 +65,31 @@ Q2_Score_Freq <-Q2$nextscore
 Q3_Score_Freq <-Q3$nextscore
 Q4_Score_Freq <-Q4$nextscore
 
-p1 <- hist(Q1_Score_Freq)
-p2 <- hist(Q2_Score_Freq)
-p3 <- hist(Q3_Score_Freq)
-p4 <- hist(Q4_Score_Freq)
+p1 <- hist(Q1_Score_Freq, border="blue", col="green")
+p2 <- hist(Q2_Score_Freq, border="blue", col="green")
+p3 <- hist(Q3_Score_Freq, border="blue", col="green")
+p4 <- hist(Q4_Score_Freq, border="blue", col="green")
 
 par(mfrow=c(2,2),oma = c(0, 0, 2, 0))
-plot( p1, col="cyan", xlim=c(-10,10), main="",xlab ="", ylab="") # first histogram
+plot( p1,col="cyan",xlim=c(-10,10), main="",xlab ="", ylab="") # first histogram
+axis(side = 2, lwd = 2,lwd.ticks=3)
 title(main = "Q1 Scoring Frequency",xlab="Points Scored", ylab="Frequency")
 plot( p2, col="red", xlim=c(-10,10), main="",xlab ="", ylab="")  # first histogram
+axis(side = 2, lwd = 2)
 title(main = "Q2 Scoring Frequency",xlab="Points Scored", ylab="Frequency")
+
 plot( p3, col="green", xlim=c(-10,10), main="",xlab ="", ylab="")  # first histogram
+axis(side = 2, lwd = 2)
 title(main = "Q3 Scoring Frequency",xlab="Points Scored", ylab="Frequency")
 plot( p4, col="blue", xlim=c(-10,10), main="",xlab ="", ylab="")  # first histogram
+axis(side = 2, lwd = 2)
 title(main = "Q4 Scoring Frequency",xlab="Points Scored", ylab="Frequency")
+
 mtext("2011 NFL Scoring Data", outer = TRUE, cex = 1.5)
 
+
+
+## ggplot
 
 
 ########## 2016 ##########
