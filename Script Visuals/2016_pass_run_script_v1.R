@@ -84,6 +84,22 @@ ggplot(by_ydline, aes(x=ABS.Yardline, y=raw_ep)) + geom_point(color='blue') + ge
   geom_line(aes(x=ABS.Yardline, y=smooth_pass), color='green', size=1.3)
 
 
+cutoff <- data.frame( x = c(-Inf, Inf), y = 0, cutoff = factor(0) )
+
+Negative_EP <- data.frame( x = c(-Inf, Inf), y = 0, Negative_EP = factor(0) )
+
+ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
+  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_run,color="Run"), size=1.3) +
+  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_pass, color='Pass'), size=1.3) +
+  scale_fill_manual(name="ez pz lgnd", values=c(points="blue", run="red", pass = "green")) + 
+  ggtitle("2016 NFL Expected Points") + labs(x="Yard Line", y="Expected Points") +geom_line(aes( x, y, linetype = Negative_EP ), Negative_EP, size=1.3)
+
+
+
+
+
+
+
 
 
 
