@@ -2,8 +2,7 @@ library(dplyr)
 library(ggplot2)
 
 # change this for your machine
-df <- read.csv("/Users/robjarvis/603_project/big_data/algo_v2_values_chenedit.csv", header = TRUE)
-
+df <- read.csv("C:/Users/MZeidan/Documents/QA/OR/big_data/algo_v2_values_chenedit.csv", header = TRUE)
 
 #this is just to check the data types of the file being loaded in. 
 #sapply(df, class)
@@ -32,6 +31,9 @@ by_ydline$smooth_ep <- predict(ep_model, by_ydline)
 cutoff <- data.frame( x = c(-Inf, Inf), y = 0, cutoff = factor(0) )
 
 ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
-  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="Line")) +
+  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="Line"), size=1.3) +
   scale_fill_manual(name="ez pz lgnd", values=c(points="blue", line="red")) + 
-  ggtitle("2016 NFL Expected Points") + labs(x="Yard Line", y="Expected Points")
+  ggtitle("2016 NFL Expected Points") + labs(x="Yard Line", y="Expected Points")+geom_line(aes( x, y, linetype = cutoff ), cutoff, size=1.3)
+
+
+
