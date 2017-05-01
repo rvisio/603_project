@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
 
-
+# change this for your machine
 df <- read.csv("/Users/robjarvis/603_project/big_data/algo_v2_values_chenedit.csv", header = TRUE)
 
 
