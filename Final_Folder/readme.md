@@ -1,8 +1,8 @@
 Graphics to have
 
-1 - EP - 2016
+1 - EP - 2016 - done
 
-2 - EP - 2016 vs 2011
+2 - EP - 2016 vs 2011 - done
 
 3 - EP - 2016 vs 2011 r/p for both
 
