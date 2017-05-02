@@ -4,7 +4,7 @@ Graphics to have
 
 2 - EP - 2016 vs 2011 - done
 
-3 - EP - 2016 vs 2011 r/p for both
+3 - EP - 2016 vs 2011 r/p for both - done
 
 4 - EP - 2016 just run/pass
 
