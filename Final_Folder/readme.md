@@ -11,8 +11,11 @@ Graphics to have
 5 - Scoring frequency histograms
 
 6 - TB elite
+
   6a - EP - Done
+  
   6b - EP vs season
+  
 
 7 - flacco elite?
 
