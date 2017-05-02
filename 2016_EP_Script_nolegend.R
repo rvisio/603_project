@@ -6,7 +6,7 @@ library(dplyr)
 library(ggplot2)
 
 
-df <- read.csv("C:/Users/MZeidan/Documents/QA/OR/big_data/algo_v2_values_chenedit.csv", header = TRUE)
+df <- read.csv("/Users/robjarvis/603_project//big_data/algo_v2_values_chenedit.csv", header = TRUE)
 
 
 #this is just to check the data types of the file being loaded in. 
@@ -44,22 +44,32 @@ ggplot(by_ydline, aes(x=ABS.Yardline, y=raw_ep)) + geom_point(color='blue') + ge
 scale_fill_discrete(name = "New Legend Title")
 
 
-
-  ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
+  legend_title <- "New Title"
+  
+  
+  p <- ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
     geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="EarnedPoints"), size=1.3)
   
+  p <- p +  scale_fill_manual(
+    name   = legend_title,
+    breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
+    values = c(lightGreen, lightRed),
+    labels = c('Over', 'Under'))
   
-  
-  +
-    scale_fill_manual(
-      name   = 'Margin',
+  p <- p + labs(colour = "donut dude bro!!!")
+p
+  p <- p + guides(fill=guide_legend(title="New Legend Title"))
+
+  p <- p +  scale_fill_manual(
+      name   = legend_title,
       breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
       values = c(lightGreen, lightRed),
       labels = c('Over', 'Under'))
   
-  +
-  ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5)) + labs(x="Yard Line", y="Expected Points",linetype='custom title') +cutoff_line +kickoff_cutoff
 
+  p <- p +ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5)) + labs(x="Yard Line", y="Expected Points",linetype='custom title') +cutoff_line +kickoff_cutoff
+
+  p
 
 
 
