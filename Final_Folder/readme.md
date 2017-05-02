@@ -6,7 +6,7 @@ Graphics to have
 
 3 - EP - 2016 vs 2011 r/p for both - done
 
-4 - EP - 2016 just run/pass
+4 - EP - 2016 just run/pass - done
 
 5 - Scoring frequency histograms
 
