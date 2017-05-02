@@ -10,6 +10,8 @@ Graphics to have
 
 5 - Scoring frequency histograms
 
+added 2011 4 histo and 2016 histo. look for any good comparisons here for a visual
+
 6 - TB elite
 
   6a - EP - Done
