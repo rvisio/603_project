@@ -16,7 +16,7 @@ added 2011 4 histo and 2016 histo. look for any good comparisons here for a visu
 
   6a - EP - Done
   
-  6b - EP vs season
+  6b - EP vs season - Done
   
 
 7 - flacco elite?
