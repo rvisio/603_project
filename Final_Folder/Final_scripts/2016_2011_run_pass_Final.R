@@ -157,7 +157,8 @@ p <- p +  scale_fill_manual(
   values = c(lightGreen, lightRed),
   labels = c('Over', 'Under'))
 
-p + title + labels + ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5))
+p + title + labels + ggtitle("2016/2011 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5))
+
 
 
 
