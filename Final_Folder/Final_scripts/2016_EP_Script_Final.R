@@ -1,6 +1,6 @@
 
 
-
+## last edit made 10:06am 5/3 mz
 
 library(dplyr)
 library(ggplot2)
@@ -41,16 +41,32 @@ cutoff_line <- geom_line(aes( x, y, linetype = Negative_EP ), Negative_EP, size=
 ggplot(by_ydline, aes(x=ABS.Yardline, y=raw_ep)) + geom_point(color='blue') + geom_line(aes(x=ABS.Yardline, y=smooth_ep), color='red', size=1.3)+cutoff_line
 
 
-
-ggplot()
-
+scale_fill_discrete(name = "New Legend Title")
 
 
-ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
-  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="EP"), size=1.3) +
-  scale_fill_manual(name="ez pz lgnd", values=c(points="blue", ep="red")) + 
-  ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5)) + labs(x="Yard Line", y="Expected Points") +cutoff_line +kickoff_cutoff
+legend_title <- "New Title"
 
 
+p <- ggplot() + geom_point(data = by_ydline, aes(x=ABS.Yardline, y=raw_ep,color="Points") ) + 
+  geom_line(data=by_ydline, aes(x=ABS.Yardline, y=smooth_ep,color="EarnedPoints"), size=1.3)
+
+p <- p +  scale_fill_manual(
+  name   = legend_title,
+  breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
+  values = c(lightGreen, lightRed),
+  labels = c('Over', 'Under'))
+
+p <- p + labs(colour = "Legend")
+p
+p <- p + guides(fill=guide_legend(title="New Legend Title"))
+
+p <- p +  scale_fill_manual(
+  name   = legend_title,
+  breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
+  values = c(lightGreen, lightRed),
+  labels = c('Over', 'Under'))
 
 
+p <- p +ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5)) + labs(x="Yard Line", y="Expected Points",linetype='EP Cutoff') +cutoff_line +kickoff_cutoff
+
+p
