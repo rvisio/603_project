@@ -73,35 +73,49 @@ cutoff_line <- geom_line(aes( x, y, linetype = Negative_EP ), Negative_EP, size=
 title <-ggtitle("2016-2011 NFL Expected Points Comparison")+theme(plot.title = element_text(hjust = 0.5)) 
 labels <- labs(x="Yard Line", y="Expected Points")
 
-ggplot() + EP_Points_2011 + EP_Points_2016 + EP_Line_2011 + EP_Line_2016 +cutoff_line +kickoff_cutoff+ggtitle("2016-2011 NFL Expected Points Comparison")+theme(plot.title = element_text(hjust = 0.5)) +labels 
+p <- ggplot() + EP_Points_2011 + EP_Points_2016 + EP_Line_2011 + EP_Line_2016  
+
+p <- p +  scale_fill_manual(
+  name   = legend_title,
+  breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
+  values = c(lightGreen, lightRed),
+  labels = c('Over', 'Under'))
+
+
+p <- p + labs(colour = "Legend")
+p
+p <- p + guides(fill=guide_legend(title="New Legend Title"))
+
+p <- p +  scale_fill_manual(
+  name   = legend_title,
+  breaks = c('upper', 'lower'), # <<< corresponds to fill aesthetic labels
+  values = c(lightGreen, lightRed),
+  labels = c('Over', 'Under'))
+
+p + title + labels + ggtitle("2016 NFL Expected Points")+ theme(plot.title = element_text(hjust = 0.5))
 
 
 
 
-
-
-
-
-
-#2016
-runs <- df
-
-#2011
-passes <- first_downs
-
-#2011/2016
-run_by_yardline <- summarize(group_by(runs, ABS.Yardline), raw_ep_run = mean(nextscore), count_run = n())
-pass_by_yardline <- summarize(group_by(passes, ydline), raw_ep_pass = mean(nextscore), count_pass = n())
-
-run_model <- loess(raw_ep_run ~ ABS.Yardline, run_by_yardline, weights = count_run, span = .5)
-pass_model <- loess(raw_ep_pass ~ ydline, pass_by_yardline, weights = count_pass, span = .5)
-
-#output LOWESS results to a vector
-by_ydline$smooth_run <- predict(run_model, run_by_yardline)
-by_ydline$smooth_pass <- predict(pass_model, pass_by_yardline)
-
-ggplot(by_ydline, aes(x=ydline, y=raw_ep)) + geom_point(color='blue') + geom_line(aes(x=ydline, y=smooth_run), color='red', size=1.3) + 
-  geom_line(aes(x=ydline, y=smooth_pass), color='green', size=1.3)
-
-
-
+# #2016
+# runs <- df
+# 
+# #2011
+# passes <- first_downs
+# 
+# #2011/2016
+# run_by_yardline <- summarize(group_by(runs, ABS.Yardline), raw_ep_run = mean(nextscore), count_run = n())
+# pass_by_yardline <- summarize(group_by(passes, ydline), raw_ep_pass = mean(nextscore), count_pass = n())
+# 
+# run_model <- loess(raw_ep_run ~ ABS.Yardline, run_by_yardline, weights = count_run, span = .5)
+# pass_model <- loess(raw_ep_pass ~ ydline, pass_by_yardline, weights = count_pass, span = .5)
+# 
+# #output LOWESS results to a vector
+# by_ydline$smooth_run <- predict(run_model, run_by_yardline)
+# by_ydline$smooth_pass <- predict(pass_model, pass_by_yardline)
+# 
+# ggplot(by_ydline, aes(x=ydline, y=raw_ep)) + geom_point(color='blue') + geom_line(aes(x=ydline, y=smooth_run), color='red', size=1.3) + 
+#   geom_line(aes(x=ydline, y=smooth_pass), color='green', size=1.3)
+# 
+# 
+# 
